@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "93d2eeb9-6dda-4294-a322-151e6143cde6",
+		"name": "small galaxy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "planets",
+			"item": [
+				{
+					"name": "{host}/planets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyODNmOTczMWJlZDUwMDk5MDQzMzMwIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjA5OTksImV4cCI6MTU5ODEyODE5OSwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpwbGFuZXRzIiwiZ2V0OnBsYW5ldHMiLCJwYXRjaDpwbGFuZXRzIiwicG9zdDpwbGFuZXRzIl19.KMvlpISICMBHg81gfuE6wBXsRo4uOMWrhX1F0nCYAbCdAKv1o97gUyLEcxfK2pEDxPTdTbJrUVBoSOV7lVJiaZz1MYaIWf249uO5mdNKFwjv4zXNMnrVW-ThnHOWPXKC69gQUyCpZhFv3p8UsBXmen724d_UnN5_c9oB66YU6uyxoQxjkzRmdVohcf6HSfvRjz9QIjSdqc-RqSb9pyoGDAwWHK6SNMacNq0nDzHszUg6_nYysT8wwhnhiwuP35rZTPwCkDXM36Vg6b-yfOyzZ4QsFlvQWCLPst8iWnMuTC8HBAgl_P99dsyC5cBu-o1zke4pKZvojY5ZP_s4MuJl_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"shemo\",\r\n    \"moonsNumber\":\"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/planets",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"planets"
+							]
+						},
+						"description": "to add a planets"
+					},
+					"response": []
+				},
+				{
+					"name": "get planets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyODNmOTczMWJlZDUwMDk5MDQzMzMwIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjA5OTksImV4cCI6MTU5ODEyODE5OSwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpwbGFuZXRzIiwiZ2V0OnBsYW5ldHMiLCJwYXRjaDpwbGFuZXRzIiwicG9zdDpwbGFuZXRzIl19.KMvlpISICMBHg81gfuE6wBXsRo4uOMWrhX1F0nCYAbCdAKv1o97gUyLEcxfK2pEDxPTdTbJrUVBoSOV7lVJiaZz1MYaIWf249uO5mdNKFwjv4zXNMnrVW-ThnHOWPXKC69gQUyCpZhFv3p8UsBXmen724d_UnN5_c9oB66YU6uyxoQxjkzRmdVohcf6HSfvRjz9QIjSdqc-RqSb9pyoGDAwWHK6SNMacNq0nDzHszUg6_nYysT8wwhnhiwuP35rZTPwCkDXM36Vg6b-yfOyzZ4QsFlvQWCLPst8iWnMuTC8HBAgl_P99dsyC5cBu-o1zke4pKZvojY5ZP_s4MuJl_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/planets",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"planets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/planets/4",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyODNmOTczMWJlZDUwMDk5MDQzMzMwIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjA5OTksImV4cCI6MTU5ODEyODE5OSwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpwbGFuZXRzIiwiZ2V0OnBsYW5ldHMiLCJwYXRjaDpwbGFuZXRzIiwicG9zdDpwbGFuZXRzIl19.KMvlpISICMBHg81gfuE6wBXsRo4uOMWrhX1F0nCYAbCdAKv1o97gUyLEcxfK2pEDxPTdTbJrUVBoSOV7lVJiaZz1MYaIWf249uO5mdNKFwjv4zXNMnrVW-ThnHOWPXKC69gQUyCpZhFv3p8UsBXmen724d_UnN5_c9oB66YU6uyxoQxjkzRmdVohcf6HSfvRjz9QIjSdqc-RqSb9pyoGDAwWHK6SNMacNq0nDzHszUg6_nYysT8wwhnhiwuP35rZTPwCkDXM36Vg6b-yfOyzZ4QsFlvQWCLPst8iWnMuTC8HBAgl_P99dsyC5cBu-o1zke4pKZvojY5ZP_s4MuJl_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"shemo\",\r\n    \"moonsNumber\":\"7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/planets/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"planets",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/planets/4",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyODNmOTczMWJlZDUwMDk5MDQzMzMwIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjA5OTksImV4cCI6MTU5ODEyODE5OSwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpwbGFuZXRzIiwiZ2V0OnBsYW5ldHMiLCJwYXRjaDpwbGFuZXRzIiwicG9zdDpwbGFuZXRzIl19.KMvlpISICMBHg81gfuE6wBXsRo4uOMWrhX1F0nCYAbCdAKv1o97gUyLEcxfK2pEDxPTdTbJrUVBoSOV7lVJiaZz1MYaIWf249uO5mdNKFwjv4zXNMnrVW-ThnHOWPXKC69gQUyCpZhFv3p8UsBXmen724d_UnN5_c9oB66YU6uyxoQxjkzRmdVohcf6HSfvRjz9QIjSdqc-RqSb9pyoGDAwWHK6SNMacNq0nDzHszUg6_nYysT8wwhnhiwuP35rZTPwCkDXM36Vg6b-yfOyzZ4QsFlvQWCLPst8iWnMuTC8HBAgl_P99dsyC5cBu-o1zke4pKZvojY5ZP_s4MuJl_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/planets/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"planets",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "stars",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/stars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYxMDg2Y2NhZmRiNmMwMDEzMmUzYmMxIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjI2OTQsImV4cCI6MTU5ODEyOTg5NCwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzdGFycyIsImdldDpzdGFycyIsInBhdGNoOnN0YXJzIiwicG9zdDpzdGFycyJdfQ.dZmyr_7kbx0KKBlpTSSvqEuZpj2PzQDLb-3KEdFVLpCBo4YxIT_-d2RR4KnqlcXfDKFhrLnhPvtCQFb3PpFoTFEuMZAZlYH9qQPsMRVYTzEQXDsD5ZzC39Tl300UnuhMakdG_nmicJ0J3VJ02RA-EGLQxH5g1RTcvrJ2FiWeQhHCIdV2A3ApsuJr55Wu06bE4pJHWfQoWY75mAV1ejC3uc27z6s5uuMtwsGtVXH95l7x4ePiaKj2PX1ssWBwf4aXMlxQuIxDbgvfU_m69Y-ceD7QRbq8aCxFzC_MN5dso49iFOIF1xz8isR3D993_8O5W0HF_QS07F6nEuy0Xcfitg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shemo\",\r\n    \"age\": \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/stars",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"stars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/stars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYxMDg2Y2NhZmRiNmMwMDEzMmUzYmMxIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjI2OTQsImV4cCI6MTU5ODEyOTg5NCwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzdGFycyIsImdldDpzdGFycyIsInBhdGNoOnN0YXJzIiwicG9zdDpzdGFycyJdfQ.dZmyr_7kbx0KKBlpTSSvqEuZpj2PzQDLb-3KEdFVLpCBo4YxIT_-d2RR4KnqlcXfDKFhrLnhPvtCQFb3PpFoTFEuMZAZlYH9qQPsMRVYTzEQXDsD5ZzC39Tl300UnuhMakdG_nmicJ0J3VJ02RA-EGLQxH5g1RTcvrJ2FiWeQhHCIdV2A3ApsuJr55Wu06bE4pJHWfQoWY75mAV1ejC3uc27z6s5uuMtwsGtVXH95l7x4ePiaKj2PX1ssWBwf4aXMlxQuIxDbgvfU_m69Y-ceD7QRbq8aCxFzC_MN5dso49iFOIF1xz8isR3D993_8O5W0HF_QS07F6nEuy0Xcfitg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shemo\",\r\n    \"age\": \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/stars/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"stars",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/stars",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlF5TGZHY2wyYjh4X0tnSzFCdk1CaiJ9.eyJpc3MiOiJodHRwczovL3NoZW1vc29taS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYxMDg2Y2NhZmRiNmMwMDEzMmUzYmMxIiwiYXVkIjoic21hbGxnYWxheHkiLCJpYXQiOjE1OTgxMjI2OTQsImV4cCI6MTU5ODEyOTg5NCwiYXpwIjoidFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3oiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzdGFycyIsImdldDpzdGFycyIsInBhdGNoOnN0YXJzIiwicG9zdDpzdGFycyJdfQ.dZmyr_7kbx0KKBlpTSSvqEuZpj2PzQDLb-3KEdFVLpCBo4YxIT_-d2RR4KnqlcXfDKFhrLnhPvtCQFb3PpFoTFEuMZAZlYH9qQPsMRVYTzEQXDsD5ZzC39Tl300UnuhMakdG_nmicJ0J3VJ02RA-EGLQxH5g1RTcvrJ2FiWeQhHCIdV2A3ApsuJr55Wu06bE4pJHWfQoWY75mAV1ejC3uc27z6s5uuMtwsGtVXH95l7x4ePiaKj2PX1ssWBwf4aXMlxQuIxDbgvfU_m69Y-ceD7QRbq8aCxFzC_MN5dso49iFOIF1xz8isR3D993_8O5W0HF_QS07F6nEuy0Xcfitg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"anas\",\r\n    \"age\": \"27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/stars",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"stars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/stars",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shemo\",\r\n    \"age\": \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/stars",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"stars"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

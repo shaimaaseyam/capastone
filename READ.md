@@ -4,7 +4,7 @@
 Heroku Link: https://smallgalaxy.herokuapp.com
 
 While running locally: http://localhost:5000
-
+g
 ## Getting Started
 
 ### Installing Dependencies
