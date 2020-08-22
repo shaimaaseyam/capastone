@@ -20,6 +20,10 @@ def create_app(test_config=None):
                              'GET, POST, PATCH, DELETE, OPTIONS')
         return response
 
+    @app.route("/")
+    def index():
+        return jsonify({"status": "Hey I'm working"})
+
     @app.route("/planets")
     @requires_auth('get:planets')
     def get_planets(payload):
@@ -39,7 +43,8 @@ def create_app(test_config=None):
             db.session.close()
         return jsonify({
             'success': True,
-            'planets': planets})
+            'planets': planets
+        })
 
     @app.route("/stars")
     @requires_auth('get:stars')
