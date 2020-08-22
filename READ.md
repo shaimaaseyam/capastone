@@ -1,7 +1,7 @@
 # capstone
 
 ## Capstone Project for Udacity's Full Stack Developer Nanodegree
-Heroku Link: https://my-udacity-capstone-project.herokuapp.com
+Heroku Link: https://smallgalaxy.herokuapp.com
 
 While running locally: http://localhost:5000
 
@@ -53,23 +53,19 @@ Using the `--reload` flag will detect file changes and restart the server automa
 ## API Reference
 
 ## Getting Started
-Base URL: This application can be run locally. The hosted version is at `https://my-udacity-capstone-project.herokuapp.com/`.
+Base URL: This application can be run locally. The hosted version is at `https://smallgalaxy.herokuapp.com`.
 
 Authentication: This application requires authentication to perform various actions. All the endpoints require
 various permissions, except the root endpoint, that are passed via the `Bearer` token.
 
 The application has three different types of roles:
-- Assistant
-  - can only view the list of actors and movies.
-  - has `view:actors, view:movies` permissions.
-- Director
-  - can perform all the actions that `Assistant` can.
-  - can only create an actor and also update respective information.
-  - has `add:actors, delete:actors, edit:actors, edit:movies, view:actors, view:movies` permissions.
-- Producer
-  - can perform all the actions that `Director` can.
-  - can also add an actor or a movie, edit and delete any actor or movie.
-  - has `add:actors, add:movies, delete:actors, delete:movies, edit:actors, edit:movies, get:movies, view:actors, view:movies` permissions.
+- human
+  - can only view (planets).
+  - has `get:planets, post:planets, patch:planets, delete:planets` permissions.
+- alien
+  - can can only view (stars).
+  - has `get:stars, post:stars, patch:stars, delete:stars` permissions.
+
 
 ## Error Handling
 Errors are returned as JSON objects in the following format:
@@ -89,67 +85,47 @@ The API will return the following errors based on how the request fails:
 
 ## Endpoints
 
-#### GET /
+
+
+#### GET /planets
  - General
-   - root endpoint
-   - can also work to check if the api is up and running
-   - is a public endpoint, requires no authentication
+   - gets the list of all the planets
+   - requires `get:planets` permission
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com`
+   - `https://smallgalaxy.herokuapp.com/planets`
 
 <details>
 <summary>Sample Response</summary>
 
 ```
 {
-    "Status": "yay its work well"
-}
-```
-
-</details>
-
-#### GET /actors
- - General
-   - gets the list of all the actors
-   - requires `view:actors` permission
- 
- - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/actors`
-
-<details>
-<summary>Sample Response</summary>
-
-```
-{
-    "actors": [
+    "planets": [
         {
-            "age": 30,
-            "id": 1,
-            "name": "Hey its my name!"
+            "name": 30,
+            "moons_number": 1
         }
     ]
 }
 ```
-
 </details>
 
-#### POST /actors
+#### POST /planets
  - General
-   - creates a new actor.
-   - requires `add:actors` permission.
+   - creates a new planet.
+   - requires `post:planets` permission.
  
  - Request Body
    - name: string, required.
-   - age: Integer, required.
+   - moons_number: Integer, required.
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/actors/create`
+   - `https://smallgalaxy.herokuapp.com/planets`
    - Request Body
      ```
         {
-        "name": "Hey its my name!",
-        "age": 30
+        "name": "blue",
+        "moons_number": 30
         }
      ```
 
@@ -164,21 +140,21 @@ The API will return the following errors based on how the request fails:
   
 </details>
 
-#### PATCH /actors/{actor_id}
+#### PATCH /actors/{id}
  - General
-   - updates the info for an actor
-   - requires `edit:actors` permission
+   - updates the info for a planet
+   - requires `patch:planets` permission
  
  - Request Body (at least one of the following fields required)
    - name: string, optional.
-   - age: Integer, required.
+   - moons_number: Integer, required.
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/actors/1`
+   - `https://smallgalaxy.herokuapp.com/planets/1`
    - Request Body
      ```
        {
-            "age": 32
+            "moons_number": 32
        }
      ```
 
@@ -194,13 +170,13 @@ The API will return the following errors based on how the request fails:
   
 </details>
 
-#### DELETE /actors/{actor_id}
+#### DELETE /actors/{id}
  - General
    - deletes an actor
    - requires `delete:actors` permission
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/actors/1`
+   - `https://smallgalaxy.herokuapp.com/planets/1`
 
 <details>
 <summary>Sample Response</summary>
@@ -214,29 +190,29 @@ The API will return the following errors based on how the request fails:
   
 </details>
 
-#### GET /movies
+#### GET /stars
  - General
-   - gets the list of all the movies
-   - requires `view:movies` permission
+   - gets the list of all the stars
+   - requires `get:stars` permission
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/movies`
+   - `https://smallgalaxy.herokuapp.com/stars`
 
 <details>
 <summary>Sample Response</summary>
 
 ```
 {
-    "movies": [
+    "stars": [
         {
             "id": 1,
-            "releaseDate": "08/02/2019",
-            "title": "movie title example"
+            "name": "red",
+            "age": "2"
         },
         {
             "id": 2,
-            "releaseDate": "10/02/2019",
-            "title": "another movie title example"
+            "name": "black",
+            "age": "8"
         }
     ]
 }
@@ -244,22 +220,22 @@ The API will return the following errors based on how the request fails:
 
 </details>
 
-#### POST /movies
+#### POST /stars
  - General
-   - creates a new movie.
-   - requires `add:movies` permission.
+   - creates a new star.
+   - requires `post:stars` permission.
  
  - Request Body
-   - title: string, required.
-   - releaseDate: integer, required.
+   - name: string, required.
+   - age: integer, required.
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/movies/create`
+   - `https://smallgalaxy.herokuapp.com/stars`
    - Request Body
      ```
         {
-            "title": "Spider Man",
-            "releaseDate": 2019,
+            "name": "Spider Man",
+            "age": 2019,
         }
      ```
 
@@ -274,21 +250,21 @@ The API will return the following errors based on how the request fails:
   
 </details>
 
-#### PATCH /movie/{movie_id}
+#### PATCH/stars/{id}
  - General
-   - updates the info for a movie
-   - requires `edit:movies` permission
+   - updates the info for a star
+   - requires `post:stars` permission
  
  - Request Body (at least one of the following fields required)
-   - title: string, optional
-   - releaseDate: integer, optional
+   - name: string, optional
+   - age: integer, optional
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/movies/3`
+   - `https://smallgalaxy.herokuapp.com/stars/3`
    - Request Body
      ```
        {
-            "releaseDate": 2017
+            "age": 5
        }
      ```
 
@@ -304,13 +280,13 @@ The API will return the following errors based on how the request fails:
   
 </details>
 
-#### DELETE /movies/{movie_id}
+#### DELETE /stars/id}
  - General
    - deletes a movie
-   - requires `delete:movies` permission
+   - requires `delete:stars` permission
  
  - Sample Request
-   - `https://my-udacity-capstone-project.herokuapp.com/movies/3`
+   - `https://smallgalaxy.herokuapp.com/stars/3`
 
 <details>
 <summary>Sample Response</summary>
@@ -329,19 +305,19 @@ The API will return the following errors based on how the request fails:
 ### For MAC OS
 For testing the backend, run the following commands (in the exact order):
 ```
-dropdb capstone_test
-createdb capstone_test
-psql capstone_test < capstone.pgsql
+dropdb galaxy
+createdb galaxy
+psql galaxy < galaxy.pgsql
 python test.py
 ```
 ### For Windows OS
 For testing the backend, run the following commands (in the exact order):
 ```
-dropdb -U <DATABASE USER> capstone_test
-createdb -U <DATABASE USER> capstone_test
-psql -U <DATABASE USER> capstone_test < capstone.pgsql
+dropdb -U <DATABASE USER> galaxy
+createdb -U <DATABASE USER> galaxy
+psql -U <DATABASE USER> galaxy < galaxy.pgsql
 py test.py
 ```
 
-Alternate way: Create the db `capstone_test` using PgAdmin and copy the contents of casting.pgsql and paste them
+Alternate way: Create the db `galaxy` using PgAdmin and copy the contents of galaxy.pgsql and paste them
 in Query tool in PgAdmin and create the db table with records. Then, run the command for MAC OS `python test.py` or `py test.py` for Windows OS.
