@@ -13,9 +13,7 @@ class GalaxyTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = app
         self.client = self.app.test_client
-        self.database_name = "galaxy"
-        self.database_path = "postgres://{}/{}".format(
-            'postgres:123@localhost:5432', self.database_name)
+        self.database_path = os.environ['TEST_DATABASE_URI']
         setup_db(self.app, self.database_path)
 
         with self.app.app_context():
