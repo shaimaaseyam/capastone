@@ -7,8 +7,6 @@
 https://shemosomi.us.auth0.com/authorize?audience=smallgalaxy&response_type=token&client_id=tPFX5DJRn9VBkTuFXf6Up6ArNJ6G2hsz&redirect_uri=http://127.0.0.1:3000/user-page
 
 
-https://shemosomi.us.auth0.com/decision?state=g6Fo2SBSeGlWUFVMRThnOXkyMzhBcXlLSWVEc01sNmF2QzA2b6N0aWTZIE5nRkRRLWNrQURJRnJUQkpGUmVKRW5pamJvZGF4azRpo2NpZNkgdFBGWDVESlJuOVZCa1R1RlhmNlVwNkFyTko2RzJoc3o
-
 
 https://shemosomi.us.auth0.com/v2/logout?client_id=tPFX5DJRn9VBkTuFXf6Up6ArNJ6G2hsz&returnTo=http://127.0.0.1:5000/logout
 

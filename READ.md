@@ -313,10 +313,10 @@ python test.py
 ### For Windows OS
 For testing the backend, run the following commands (in the exact order):
 ```
-dropdb -U <DATABASE USER> galaxy
-createdb -U <DATABASE USER> galaxy
-psql -U <DATABASE USER> galaxy < galaxy.pgsql
-py test.py
+dropdb -U <DATABASE USER> galaxy_test
+createdb -U <DATABASE USER> galaxy_test
+psql -U <DATABASE USER> galaxy_test < galaxy.pgsql
+py test_app.py
 ```
 
 Alternate way: Create the db `galaxy` using PgAdmin and copy the contents of galaxy.pgsql and paste them

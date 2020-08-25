@@ -129,9 +129,9 @@ COPY public.alembic_version (version_num) FROM stdin;
 --
 
 COPY public.planets (id, name, moons_number) FROM stdin;
-2	shemo	5
-5	shemo	7
-6	shemo	7
+1	mars	3
+2	oranos	1
+3	earth	5
 \.
 
 
@@ -140,10 +140,8 @@ COPY public.planets (id, name, moons_number) FROM stdin;
 --
 
 COPY public.stars (id, name, age) FROM stdin;
-2	shemo	30
-5	shemo	30
-6	shemo	30
-4	shemo	30
+1	sun	300
+2	red	5
 \.
 
 
@@ -151,14 +149,14 @@ COPY public.stars (id, name, age) FROM stdin;
 -- Name: planets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.planets_id_seq', 6, true);
+SELECT pg_catalog.setval('public.planets_id_seq', 3, true);
 
 
 --
 -- Name: stars_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.stars_id_seq', 6, true);
+SELECT pg_catalog.setval('public.stars_id_seq', 2, true);
 
 
 --

@@ -1,4 +1,5 @@
 import os
+import sys
 from models import db, setup_db, Planets, Stars
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -24,6 +25,8 @@ def create_app(test_config=None):
     def index():
         return jsonify({"status": "Hey I'm working"})
 
+        '''planets'''
+
     @app.route("/planets")
     @requires_auth('get:planets')
     def get_planets(payload):
@@ -31,35 +34,21 @@ def create_app(test_config=None):
         try:
             get_planets = Planets.query.all()
             planets = []
-            for q in get_planets:
+            for planet in get_planets:
                 planets.append({
-                    'id': q.id,
-                    'name': q.name,
-                    'moons_number': q.moons_number
+                    'id': planet.id,
+                    'name': planet.name,
+                    'moons_number': planet.moons_number
                 })
         except:
-            abort(400)
+            error = True
         finally:
-            db.session.close()
-        return jsonify({
-            'success': True,
-            'planets': planets
-        })
-
-    @app.route("/stars")
-    @requires_auth('get:stars')
-    def stars(payload):
-        get_stars = Stars.query.all()
-        stars = []
-        for q in get_stars:
-            stars.append({
-                'id': q.id,
-                'name': q.name,
-                'age': q.age
-            })
-
-        return jsonify({
-            'stars': stars})
+            if error:
+                abort(404)
+            else:
+                return jsonify({
+                    'planets': planets
+                })
 
     @app.route("/planets", methods=["POST"])
     @requires_auth('post:planets')
@@ -74,79 +63,140 @@ def create_app(test_config=None):
             )
             add.insert()
         except:
-            abort(422)
+            error = True
         finally:
-            db.session.close()
-        return jsonify({
-            'name': name,
-            'moons_number': moons_number
-        })
+            if error:
+                abort(422)
+            else:
+                return jsonify({
+                    'success': True,
+                    'name': name,
+                    'moons_number': moons_number
+                })
+
+    @app.route('/planets/<planet_id>', methods=['DELETE'])
+    @requires_auth('delete:planets')
+    def del_planets(payload, planet_id):
+        error = False
+        try:
+            planets = Planets.query.filter_by(id=planet_id).first()
+            planets.delete()
+        except:
+            error = True
+        finally:
+            if error:
+                abort(404)
+            else:
+                return jsonify({
+                    'success': True
+                })
+
+    @app.route('/planets/<planet_id>', methods=["PATCH"])
+    @requires_auth('patch:planets')
+    def patch_planets(payload, planet_id):
+        error = False
+        get_planets = Planets.query.filter_by(id=planet_id).first()
+        try:
+            name = request.get_json()["name"]
+            moons_number = request.get_json()["moonsNumber"]
+            get_planets.name = name
+            get_planets.moons_number = moons_number
+            get_planets.update()
+        except:
+            error = True
+        finally:
+            if error:
+                abort(422)
+            else:
+                return jsonify({
+                    'success': True
+                })
+
+        '''stars'''
+
+    @app.route("/stars")
+    @requires_auth('get:stars')
+    def stars(payload):
+        error = False
+        try:
+            get_stars = Stars.query.all()
+            stars = []
+            for star in get_stars:
+                stars.append({
+                    'id': star.id,
+                    'name': star.name,
+                    'age': star.age
+                })
+        except:
+            error = True
+        finally:
+            if error:
+                abort(404)
+            else:
+                return jsonify({
+                    'stars': stars})
 
     @app.route("/stars", methods=["POST"])
     @requires_auth('post:stars')
     def add_stars(payload):
-        name = request.get_json()['name']
-        age = request.get_json()['age']
-        add = Stars(
-            name=name,
-            age=age
-        )
-        add.insert()
-        return jsonify({
-            'name': name,
-            'age': age
-        })
-
-    @app.route('/planets/<int:id>', methods=['DELETE'])
-    @requires_auth('delete:planets')
-    def del_planets(payload, id):
         error = False
         try:
-            planets = Planets.query.filter_by(id=id).first()
-            planets.delete()
+            name = request.get_json()['name']
+            age = request.get_json()['age']
+            add = Stars(
+                name=name,
+                age=age
+            )
+            add.insert()
         except:
-            abort(404)
-        return jsonify({
-            'success': True
-        })
+            error = True
+        finally:
+            if error:
+                abort(422)
+            else:
+                return jsonify({
+                    'success': True,
+                    'name': name,
+                    'age': age
+                })
 
-    @app.route('/stars/<int:id>', methods=['DELETE'])
+    @app.route('/stars/<star_id>', methods=['DELETE'])
     @requires_auth('delete:stars')
-    def del_stars(payload, id):
+    def del_stars(payload, star_id):
+        error = False
+        stars = Stars.query.filter_by(id=star_id).first()
+        try:
+            stars.delete()
+        except:
+            error = True
+        finally:
+            if error:
+                abort(404)
+            else:
+                return jsonify({
+                    'success': True
+                })
+
+    @app.route('/stars/<star_id>', methods=['PATCH'])
+    @requires_auth('patch:stars')
+    def patch_stars(payload, star_id):
         error = False
         try:
-            stars = Stars.query.filter_by(id=id).delete()
+            get_stars = Stars.query.filter_by(id=star_id).first()
+            name = request.get_json()["name"]
+            age = request.get_json()["age"]
+            get_stars.name = name
+            get_stars.age = age
+            get_stars.update()
         except:
-            abort(404)
-        return jsonify({
-            'success': True
-        })
-
-    @app.route('/stars/<int:id>', methods=['PATCH'])
-    @requires_auth('patch:stars')
-    def patch_stars(payload, id):
-        name = request.get_json()["name"]
-        age = request.get_json()["age"]
-        get_stars = Stars.query.filter_by(id=id).first()
-        get_stars.name = name
-        get_stars.age = age
-        get_stars.update()
-        return jsonify({
-            'success': True
-        })
-
-    @app.route('/planets/<int:id>', methods=['PATCH'])
-    @requires_auth('patch:planets')
-    def patch_planets(payload, id):
-        name = request.get_json()["name"]
-        moons_number = request.get_json()["moonsNumber"]
-        get_planets = Planets.query.filter_by(id=id).first()
-        get_planets.name = name
-        get_planets.moons_number = moons_number
-        get_planets.update()
-        return jsonify({
-            'success': True
-        })
+            error = True
+        finally:
+            if error:
+                abort(422)
+            else:
+                return jsonify({
+                    'success': True
+                })
 
     @app.errorhandler(404)
     def not_found(error):
