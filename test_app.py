@@ -48,6 +48,11 @@ class GalaxyTestCase(unittest.TestCase):
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 404)
 
+    def test_get_planets_by_wrong_route_401(self):
+        res = self.client().get('/planets', headers=self.wrong_headers)
+        data = json.loads(res.data)
+        self.assertEqual(res.status_code, 401)
+
     def test_get_planets_200(self):
         res = self.client().get('/planets', headers=self.human_header)
         data = json.loads(res.data)
